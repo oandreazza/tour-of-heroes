@@ -26,7 +26,7 @@ var HeroDetailComponent = (function () {
         });
     };
     HeroDetailComponent.prototype.save = function () {
-        this.heroService.save(this.hero).then(this.goBack);
+        this.heroService.update(this.hero).then(this.goBack);
     };
     HeroDetailComponent.prototype.goBack = function () {
         window.history.back();
