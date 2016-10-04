@@ -1,0 +1,6 @@
+<div>
+  <label>Hero name:</label> <input #heroName />
+  <button (click)="create(heroName.value); heroName.value=''">
+    Save
+  </button>
+</div>

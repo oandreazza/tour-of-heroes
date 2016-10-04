@@ -14,7 +14,7 @@ require('rxjs/add/operator/toPromise');
 var HeroService = (function () {
     function HeroService(http) {
         this.http = http;
-        this.heroesUrl = "http://localhost/api/heroes";
+        this.heroesUrl = "http://localhost:8080/api/heroes";
     }
     HeroService.prototype.getHeroes = function () {
         return this.http.get(this.heroesUrl)
@@ -28,6 +28,11 @@ var HeroService = (function () {
             .toPromise()
             .then(function (response) { return response.json().data; })
             .catch(this.handleError);
+    };
+    HeroService.prototype.save = function (name) {
+        var urlSave = this.heroesUrl + "/save";
+        this.http.post(urlSave, JSON.stringify({ name: name }))
+            .toPromise().catch(this.handleError);
     };
     HeroService = __decorate([
         core_1.Injectable(), 

@@ -20,10 +20,14 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.heroService.getHeroes()
-            .then(function (heroes) { return _this.heroes = heroes.slice(1, 5); });
+            .then(function (heroes) { return _this.heroes = heroes.slice(0, 10); });
     };
     DashboardComponent.prototype.gotoDetail = function (hero) {
         var link = ['/detail', hero.id];
+        this.router.navigate(link);
+    };
+    DashboardComponent.prototype.create = function () {
+        var link = ['/create'];
         this.router.navigate(link);
     };
     DashboardComponent = __decorate([
