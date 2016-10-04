@@ -30,6 +30,11 @@ export class HeroDetailComponent implements OnInit{
     });
   }
 
+  update(hero: Hero): void {
+    this.heroService.update(hero);
+    this.goBack();
+  }
+
   goBack(): void {
     window.history.back();
   }

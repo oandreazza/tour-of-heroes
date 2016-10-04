@@ -33,6 +33,12 @@ export class HeroService {
 			.toPromise().catch(this.handleError);
 	}
 
-	
+	update(hero: Hero): void{
+		const urlSave = `${this.heroesUrl}/update`;
+
+		this.http.post(urlSave, JSON.stringify(hero))
+			.toPromise().catch(this.handleError);	
+
+	}
 
 }

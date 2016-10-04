@@ -34,6 +34,11 @@ var HeroService = (function () {
         this.http.post(urlSave, JSON.stringify({ name: name }))
             .toPromise().catch(this.handleError);
     };
+    HeroService.prototype.update = function (hero) {
+        var urlSave = this.heroesUrl + "/update";
+        this.http.post(urlSave, JSON.stringify(hero))
+            .toPromise().catch(this.handleError);
+    };
     HeroService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
