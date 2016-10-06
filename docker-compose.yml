@@ -25,3 +25,8 @@ services:
 
   db-mysql:
     image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123
+      - MYSQL_DATABASE=heroes
+      - MYSQL_USER=heroes_app
+      - MYSQL_PASSWORD=123
