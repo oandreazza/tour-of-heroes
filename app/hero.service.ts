@@ -8,14 +8,16 @@ export class HeroService {
 
 	private heroesUrl = "http://localhost/api/heroes";
 
+	private handleError = "";
+
 	constructor(private http: Http) { }
 
-	getHeroes(): Promise<Hero[]> {	
+	getHeroes(): Promise<Hero[]> {
 		return this.http.get(this.heroesUrl)
                .toPromise()
                .then(response => response.json().data as Hero[])
                .catch(this.handleError);
-	
+
 	}
 
 	getHero(id: number): Promise<Hero> {

@@ -1,0 +1,1 @@
+docker run -it -p 3000:3000 -v /Users/mauricio/Development/labs/FrontEnd-Frameworks/Angular2/tour-of-heroes:/usr/src/app -w /usr/src/app node:6 npm start

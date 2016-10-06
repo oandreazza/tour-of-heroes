@@ -15,6 +15,7 @@ var HeroService = (function () {
     function HeroService(http) {
         this.http = http;
         this.heroesUrl = "http://localhost/api/heroes";
+        this.handleError = "";
     }
     HeroService.prototype.getHeroes = function () {
         return this.http.get(this.heroesUrl)
