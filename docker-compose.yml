@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+
+  front:
+    build: ./front
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  backend:
+    image: mauricioweb/heroes-api:1.0
+    environment:
+      - DB_HOST=db-mysql
+      - DB_DATABASE=heroes
+      - DB_USERNAME=heroes_app
+      - DB_PASSWORD=123
+    ports:
+      - "80:80"
+    depends_on:
+      - db-mysql
+
+  db-mysql:
+    image: mysql

@@ -14,7 +14,12 @@ require('rxjs/add/operator/toPromise');
 var HeroService = (function () {
     function HeroService(http) {
         this.http = http;
+<<<<<<< HEAD
         this.heroesUrl = "http://localhost:8080/api/heroes";
+=======
+        this.heroesUrl = "http://localhost/api/heroes";
+        this.handleError = "";
+>>>>>>> 85cd6ab0fbd708e07d230d994ce9a8ba35b2be5a
     }
     HeroService.prototype.getHeroes = function () {
         return this.http.get(this.heroesUrl)

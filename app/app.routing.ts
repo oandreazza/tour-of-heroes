@@ -6,7 +6,6 @@ import { DashboardComponent }      from './dashboard.component';
 import { HeroDetailComponent }      from './hero-detail.component';
 import { HeroCreateComponent }      from './hero-create.component';
 
-
 const appRoutes: Routes = [
   {
     path: 'heroes',
@@ -31,7 +30,7 @@ const appRoutes: Routes = [
     component: HeroCreateComponent
   }
 
-  
+
 
 ];
 
