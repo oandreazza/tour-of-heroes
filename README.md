@@ -1,4 +1,4 @@
-# Angular 2 with Lumen API and Mysql Db orchestred orchestrated by Docker
+# Angular 2 with Lumen API and Mysql Db orchestrated by Docker
 
 
 ## How to run
