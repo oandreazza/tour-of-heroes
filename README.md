@@ -2,7 +2,8 @@
 
 
 Just run:
+```sh
+$ docker-compose up -d
+$ docker-compose exec backend php artisan migrate
+```
 
-1 - docker-compose up -d
-2 - Wait for db container up
-3 - docker-compose exec backend php artisan migrate
