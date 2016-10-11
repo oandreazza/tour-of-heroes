@@ -34,6 +34,10 @@ export class HeroesComponent implements OnInit {
     this.selectedHero = hero;
   }
 
+  delete(hero: Hero): void{
+    this.heroService.delete(hero.id);
+  }
+
   gotoDetail(): void {
     this.router.navigate(['/detail', this.selectedHero.id]);
   }

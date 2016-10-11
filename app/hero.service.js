@@ -15,7 +15,6 @@ var HeroService = (function () {
     function HeroService(http) {
         this.http = http;
         this.heroesUrl = "http://localhost/api/heroes";
-        this.handleError = "";
     }
     HeroService.prototype.getHeroes = function () {
         return this.http.get(this.heroesUrl)
@@ -36,9 +35,18 @@ var HeroService = (function () {
             .toPromise().catch(this.handleError);
     };
     HeroService.prototype.update = function (hero) {
-        var urlSave = this.heroesUrl + "/update";
-        this.http.post(urlSave, JSON.stringify(hero))
+        var urlUpdate = this.heroesUrl + "/update";
+        this.http.post(urlUpdate, JSON.stringify(hero))
             .toPromise().catch(this.handleError);
+    };
+    HeroService.prototype.delete = function (id) {
+        var urlDelete = this.heroesUrl + "/" + id;
+        this.http.delete(urlDelete)
+            .toPromise().catch(this.handleError);
+    };
+    HeroService.prototype.handleError = function (error) {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
     };
     HeroService = __decorate([
         core_1.Injectable(), 

@@ -1,4 +1,4 @@
-FROM node:6
+FROM npm:6
 
 ENV HOME /usr/src/app
 

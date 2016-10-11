@@ -2,14 +2,12 @@ import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
+import { Hero } from './hero';
 
 @Injectable()
 export class HeroService {
 
 	private heroesUrl = "http://localhost/api/heroes";
-
-
-	private handleError = "";
 
 	constructor(private http: Http) { }
 
@@ -38,11 +36,23 @@ export class HeroService {
 	}
 
 	update(hero: Hero): void{
-		const urlSave = `${this.heroesUrl}/update`;
+		const urlUpdate = `${this.heroesUrl}/update`;
 
-		this.http.post(urlSave, JSON.stringify(hero))
-			.toPromise().catch(this.handleError);	
+		this.http.post(urlUpdate, JSON.stringify(hero))
+			.toPromise().catch(this.handleError);
 
 	}
+
+	delete(id: number): void{
+		const urlDelete = `${this.heroesUrl}/${id}`;
+		this.http.delete(urlDelete)
+			.toPromise().catch(this.handleError);
+	}
+
+	private handleError(error: any): Promise<any> {
+  	console.error('An error occurred', error); // for demo purposes only
+  	return Promise.reject(error.message || error);
+	}
+
 
 }
