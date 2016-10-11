@@ -1,3 +1,4 @@
+![Docker Automated buil](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg?maxAge=2592000)
 # Angular 2 with Lumen API and Mysql Db orchestrated by Docker
 
 
