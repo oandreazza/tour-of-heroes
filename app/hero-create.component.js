@@ -15,8 +15,8 @@ var HeroCreateComponent = (function () {
         this.heroService = heroService;
     }
     HeroCreateComponent.prototype.create = function (name) {
-        this.heroService.save(name);
-        this.goBack();
+        this.heroService.save(name)
+            .then(this.goBack);
     };
     HeroCreateComponent.prototype.goBack = function () {
         window.history.back();

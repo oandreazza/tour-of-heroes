@@ -26,8 +26,8 @@ var HeroDetailComponent = (function () {
         });
     };
     HeroDetailComponent.prototype.update = function (hero) {
-        this.heroService.update(hero);
-        this.goBack();
+        this.heroService.update(hero)
+            .then(this.goBack);
     };
     HeroDetailComponent.prototype.goBack = function () {
         window.history.back();

@@ -31,8 +31,8 @@ export class HeroDetailComponent implements OnInit{
   }
 
   update(hero: Hero): void {
-    this.heroService.update(hero);
-    this.goBack();
+    this.heroService.update(hero)
+    .then(this.goBack);
   }
 
   goBack(): void {

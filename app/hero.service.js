@@ -15,6 +15,7 @@ var HeroService = (function () {
     function HeroService(http) {
         this.http = http;
         this.heroesUrl = "http://localhost/api/heroes";
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     HeroService.prototype.getHeroes = function () {
         return this.http.get(this.heroesUrl)
@@ -31,18 +32,22 @@ var HeroService = (function () {
     };
     HeroService.prototype.save = function (name) {
         var urlSave = this.heroesUrl + "/save";
-        this.http.post(urlSave, JSON.stringify({ name: name }))
-            .toPromise().catch(this.handleError);
+        return this.http.post(urlSave, JSON.stringify({ name: name }))
+            .toPromise()
+            .then(function (res) { return res.json().data; })
+            .catch(this.handleError);
     };
     HeroService.prototype.update = function (hero) {
         var urlUpdate = this.heroesUrl + "/update";
-        this.http.post(urlUpdate, JSON.stringify(hero))
+        return this.http.post(urlUpdate, JSON.stringify(hero))
             .toPromise().catch(this.handleError);
     };
     HeroService.prototype.delete = function (id) {
         var urlDelete = this.heroesUrl + "/" + id;
-        this.http.delete(urlDelete)
-            .toPromise().catch(this.handleError);
+        return this.http.delete(urlDelete)
+            .toPromise()
+            .then(function () { return null; })
+            .catch(this.handleError);
     };
     HeroService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only

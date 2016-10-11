@@ -17,8 +17,8 @@ export class HeroCreateComponent{
 	constructor(private heroService: HeroService){}
 
 	create(name: string): void{
-		this.heroService.save(name);
-		this.goBack();
+		this.heroService.save(name)
+		.then(this.goBack);
 	}
 
 
