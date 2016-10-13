@@ -10,28 +10,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var hero_1 = require('./hero');
-var hero_service_1 = require('./hero.service');
-var HeroCreateComponent = (function () {
-    function HeroCreateComponent(heroService) {
-        this.heroService = heroService;
-        this.hero = new hero_1.Hero();
+var HeroFormComponent = (function () {
+    function HeroFormComponent() {
+        this.submited = false;
     }
-    HeroCreateComponent.prototype.create = function (hero) {
-        this.heroService.save(hero.name)
-            .then(this.goBack);
+    HeroFormComponent.prototype.onSubmit = function () {
+        this.submited = true;
     };
-    HeroCreateComponent.prototype.goBack = function () {
-        window.history.back();
-    };
-    HeroCreateComponent = __decorate([
+    HeroFormComponent.prototype.diagnostic = function () { return JSON.stringify(this.hero); };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', hero_1.Hero)
+    ], HeroFormComponent.prototype, "hero", void 0);
+    HeroFormComponent = __decorate([
         core_1.Component({
-            selector: 'hero-create',
-            templateUrl: 'app/hero-form.component.html',
-            styleUrls: ['app/hero-create.component.css']
+            moduleId: module.id,
+            selector: 'hero-form',
+            templateUrl: 'hero-form.component.html'
         }), 
-        __metadata('design:paramtypes', [hero_service_1.HeroService])
-    ], HeroCreateComponent);
-    return HeroCreateComponent;
+        __metadata('design:paramtypes', [])
+    ], HeroFormComponent);
+    return HeroFormComponent;
 }());
-exports.HeroCreateComponent = HeroCreateComponent;
-//# sourceMappingURL=hero-create.component.js.map
+exports.HeroFormComponent = HeroFormComponent;
+//# sourceMappingURL=hero-form.component.js.map

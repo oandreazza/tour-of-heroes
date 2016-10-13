@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-
+import { Hero }    from './hero';
 import { HeroService } from './hero.service';
 
 @Component({
   selector: 'hero-create',
-  templateUrl: 'app/hero-create.component.html',
+  templateUrl: 'app/hero-form.component.html',
   styleUrls: ['app/hero-create.component.css']
 
 })
@@ -13,11 +13,12 @@ import { HeroService } from './hero.service';
 
 export class HeroCreateComponent{
 
+	hero = new Hero();
 
 	constructor(private heroService: HeroService){}
 
-	create(name: string): void{
-		this.heroService.save(name)
+	create(hero: Hero): void{
+		this.heroService.save(hero.name)
 		.then(this.goBack);
 	}
 

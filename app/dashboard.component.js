@@ -22,8 +22,11 @@ var DashboardComponent = (function () {
         this.heroService.getHeroes()
             .then(function (heroes) { return _this.heroes = heroes.slice(0, 10); });
     };
-    DashboardComponent.prototype.gotoDetail = function (hero) {
-        var link = ['/detail', hero.id];
+    DashboardComponent.prototype.selectHero = function (hero) {
+        this.selectedHero = hero;
+    };
+    DashboardComponent.prototype.goToDetail = function () {
+        var link = ['/detail', this.selectedHero.id];
         this.router.navigate(link);
     };
     DashboardComponent.prototype.create = function () {

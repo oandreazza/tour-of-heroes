@@ -14,6 +14,7 @@ import { HeroService } from './hero.service';
 
 export class DashboardComponent implements OnInit { 
 	heroes: Hero[] = []
+  selectedHero: Hero;
 
 	constructor(private heroService: HeroService, private router: Router) { }
 
@@ -22,10 +23,16 @@ export class DashboardComponent implements OnInit {
       		.then(heroes => this.heroes = heroes.slice(0, 10));
   }
 
-  gotoDetail(hero: Hero): void {
-  	let link = ['/detail', hero.id];
-    this.router.navigate(link);
+  selectHero(hero: Hero): void {
+    this.selectedHero = hero;
 	}
+
+  goToDetail(){
+    let link = ['/detail', this.selectedHero.id];
+    this.router.navigate(link);
+  }
+
+
 
   create(): void{
     let link = ['/create'];

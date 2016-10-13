@@ -34,6 +34,9 @@ h3 {
 h4 {
   position: relative;
 }
+.selectedDashBoardHero{
+  background-color: green;
+}
 .module:hover {
   background-color: #EEE;
   cursor: pointer;

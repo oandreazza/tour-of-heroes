@@ -10,11 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var hero_1 = require('./hero');
 var hero_service_1 = require('./hero.service');
 var HeroesComponent = (function () {
     function HeroesComponent(router, heroService) {
         this.router = router;
         this.heroService = heroService;
+        this.quickHero = new hero_1.Hero();
     }
     HeroesComponent.prototype.getHeroes = function () {
         var _this = this;
@@ -25,6 +27,13 @@ var HeroesComponent = (function () {
     };
     HeroesComponent.prototype.onSelect = function (hero) {
         this.selectedHero = hero;
+    };
+    HeroesComponent.prototype.quickAdd = function (hero) {
+        var _this = this;
+        this.heroService
+            .save(hero.name)
+            .then(function (hero) { return _this.heroes.push(hero); });
+        this.quickHero = new hero_1.Hero();
     };
     HeroesComponent.prototype.delete = function (hero) {
         var _this = this;

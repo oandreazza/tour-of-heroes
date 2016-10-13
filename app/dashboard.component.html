@@ -1,8 +1,12 @@
 <h3>Top Heroes</h3>
-<button (click)="create()">Create</button>
+<button class="btn btn-primary" (click)="create()">Create</button>
+<button  class="btn btn-default" [disabled]="!selectedHero" (click)="goToDetail()">Edit</button>
 <div class="grid grid-pad">
-  <div *ngFor="let hero of heroes" (click)="gotoDetail(hero)" class="col-1-4">
-    <div class="module hero">
+	<p *ngIf="heroes.length == 0" class="bg-warning text-warning">
+		No heroes creted until now. Be the first clicking on Create button!
+	</p>
+  <div *ngFor="let hero of heroes" (click)="selectHero(hero)" class="col-1-4">
+    <div class="module hero" [class.selectedDashBoardHero]="hero === selectedHero">
       <h4>{{hero.name}}</h4>
     </div>
   </div>
