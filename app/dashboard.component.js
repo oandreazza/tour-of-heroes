@@ -29,6 +29,8 @@ var DashboardComponent = (function () {
         var link = ['/detail', this.selectedHero.id];
         this.router.navigate(link);
     };
+    DashboardComponent.prototype.search = function (name) {
+    };
     DashboardComponent.prototype.create = function () {
         var link = ['/create'];
         this.router.navigate(link);

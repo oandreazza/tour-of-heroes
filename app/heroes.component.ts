@@ -17,7 +17,7 @@ import { HeroService } from './hero.service';
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
-  quickHero = new Hero();
+  quickHero: Hero = new Hero();
 
   constructor(
     private router: Router,
@@ -35,9 +35,9 @@ export class HeroesComponent implements OnInit {
     this.selectedHero = hero;
   }
 
-  quickAdd(hero: Hero): void{
+  quickAdd(): void{
     this.heroService
-      .save(hero.name)
+      .save(this.quickHero.name)
       .then( hero => this.heroes.push(hero));
 
       this.quickHero = new Hero();

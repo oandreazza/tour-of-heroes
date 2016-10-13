@@ -3,14 +3,14 @@
 <form class="form-inline" #heroForm="ngForm">
 	<div class="form-group">
 		<label for="exampleInputName2">Name</label>
-		<input type="text" (keyup.enter)="quickAdd(quickHero)" class="form-control" [(ngModel)]="quickHero.name" id="name" name="name" placeholder="" required>
+		<input type="text" (keyup.enter)="quickAdd()" class="form-control" [(ngModel)]="quickHero.name" id="name" name="name" placeholder="" required>
 	</div>
-	<button type="button"  (click)="quickAdd(quickHero);quickHero.name= '' " [disabled]="!heroForm.form.valid" class="btn btn-default">Quick add</button>
+	<button type="button"  (click)="quickAdd()" [disabled]="!heroForm.form.valid" class="btn btn-default">Quick add</button>
 </form>
 
 
-<ul class="heroes">
-	<li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+<ul class="list-group">
+	<li class="list-group-item" *ngFor="let hero of heroes" [class.active]="hero === selectedHero" (click)="onSelect(hero)">
 		<span class="badge">{{hero.id}}</span> {{hero.name}}
 		<button type="button"  (click)="delete(hero); $event.stopPropagation()" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	</li>

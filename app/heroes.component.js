@@ -28,10 +28,10 @@ var HeroesComponent = (function () {
     HeroesComponent.prototype.onSelect = function (hero) {
         this.selectedHero = hero;
     };
-    HeroesComponent.prototype.quickAdd = function (hero) {
+    HeroesComponent.prototype.quickAdd = function () {
         var _this = this;
         this.heroService
-            .save(hero.name)
+            .save(this.quickHero.name)
             .then(function (hero) { return _this.heroes.push(hero); });
         this.quickHero = new hero_1.Hero();
     };

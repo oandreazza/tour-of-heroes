@@ -32,7 +32,9 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(link);
   }
 
-
+  search(name: string){
+  
+  }
 
   create(): void{
     let link = ['/create'];

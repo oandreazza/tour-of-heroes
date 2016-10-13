@@ -1,4 +1,12 @@
 <h3>Top Heroes</h3>
+<form class="form-inline" #heroForm="ngForm">
+	<div class="form-group">
+		<label for="exampleInputName2">Name</label>
+		<input type="text" #heroName class="form-control" id="name" name="name" placeholder="" required>
+	</div>
+	<button type="button"  (click)="search(heroName.value)" class="btn btn-primary">Search</button>
+</form>
+
 <button class="btn btn-primary" (click)="create()">Create</button>
 <button  class="btn btn-default" [disabled]="!selectedHero" (click)="goToDetail()">Edit</button>
 <div class="grid grid-pad">
