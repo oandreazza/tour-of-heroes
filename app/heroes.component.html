@@ -2,19 +2,21 @@
 
 <form class="form-inline" #heroForm="ngForm">
 	<div class="form-group">
-		<label for="exampleInputName2">Name</label>
+		<label for="name">Name</label>
 		<input type="text" (keyup.enter)="quickAdd()" class="form-control" [(ngModel)]="quickHero.name" id="name" name="name" placeholder="" required>
 	</div>
 	<button type="button"  (click)="quickAdd()" [disabled]="!heroForm.form.valid" class="btn btn-default">Quick add</button>
 </form>
 
 
-<ul class="list-group">
-	<li class="list-group-item" *ngFor="let hero of heroes" [class.active]="hero === selectedHero" (click)="onSelect(hero)">
-		<span class="badge">{{hero.id}}</span> {{hero.name}}
+
+<div class="list-group">
+	<a class="list-group-item list-group-item-action" *ngFor="let hero of heroes" [class.active]="hero === selectedHero" (click)="onSelect(hero)">
+			{{hero.name}}
 		<button type="button"  (click)="delete(hero); $event.stopPropagation()" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	</li>
-</ul>
+	</a>
+</div>
+
 <div *ngIf="selectedHero">
 	<h2>
 		{{selectedHero.name | uppercase}} is my hero
