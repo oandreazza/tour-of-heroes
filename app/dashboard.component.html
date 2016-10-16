@@ -10,9 +10,7 @@
 <button class="btn btn-primary" (click)="create()">Create</button>
 <button  class="btn btn-default" [disabled]="!selectedHero" (click)="goToDetail()">Edit</button>
 <div class="grid grid-pad">
-	<p *ngIf="heroes.length == 0" class="bg-warning text-warning">
-		No heroes creted until now. Be the first clicking on Create button!
-	</p>
+	<loading-heroes [loaded]="loaded" [hasHeroes]="hasHeroes"></loading-heroes>
   <div *ngFor="let hero of heroes" (click)="selectHero(hero)" class="col-1-4">
     <div class="module hero" [class.selectedDashBoardHero]="hero === selectedHero">
       <h4>{{hero.name}}</h4>

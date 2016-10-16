@@ -17,10 +17,16 @@ var HeroesComponent = (function () {
         this.router = router;
         this.heroService = heroService;
         this.quickHero = new hero_1.Hero();
+        this.loaded = false;
+        this.hasHeroes = false;
     }
     HeroesComponent.prototype.getHeroes = function () {
         var _this = this;
-        this.heroService.getHeroes().then(function (heroes) { return _this.heroes = heroes; });
+        this.heroService.getHeroes().then(function (heroes) {
+            _this.heroes = heroes;
+            _this.loaded = true;
+            _this.hasHeroes = _this.heroes.length > 0 ? true : false;
+        });
     };
     HeroesComponent.prototype.ngOnInit = function () {
         this.getHeroes();
@@ -29,19 +35,22 @@ var HeroesComponent = (function () {
         this.selectedHero = hero;
     };
     HeroesComponent.prototype.quickAdd = function () {
-        var _this = this;
         this.heroService
             .save(this.quickHero.name)
-            .then(function (hero) { return _this.heroes.push(hero); });
+            .then(this.getHeroes());
         this.quickHero = new hero_1.Hero();
     };
     HeroesComponent.prototype.delete = function (hero) {
         var _this = this;
         this.heroService.delete(hero.id).then(function () {
-            _this.heroes = _this.heroes.filter(function (h) { return h !== hero; });
+            _this.getHeroes();
             if (_this.selectedHero === hero) {
                 _this.selectedHero = null;
             }
+            _this.deletedHero = hero;
+            setTimeout(function () {
+                _this.deletedHero = null;
+            }, 2000);
         });
     };
     HeroesComponent.prototype.gotoDetail = function () {

@@ -16,11 +16,16 @@ var DashboardComponent = (function () {
         this.heroService = heroService;
         this.router = router;
         this.heroes = [];
+        this.loaded = false;
+        this.hasHeroes = false;
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.heroService.getHeroes()
-            .then(function (heroes) { return _this.heroes = heroes.slice(0, 10); });
+        this.heroService.getHeroes().then(function (heroes) {
+            _this.loaded = true;
+            _this.hasHeroes = heroes.length == 0 ? false : true;
+            _this.heroes = heroes.slice(0, 10);
+        });
     };
     DashboardComponent.prototype.selectHero = function (hero) {
         this.selectedHero = hero;

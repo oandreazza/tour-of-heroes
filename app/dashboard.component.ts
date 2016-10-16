@@ -12,15 +12,20 @@ import { HeroService } from './hero.service';
 
 })
 
-export class DashboardComponent implements OnInit { 
+export class DashboardComponent implements OnInit {
 	heroes: Hero[] = []
   selectedHero: Hero;
+  loaded = false;
+  hasHeroes = false;
 
 	constructor(private heroService: HeroService, private router: Router) { }
 
 	ngOnInit(): void {
-    	this.heroService.getHeroes()
-      		.then(heroes => this.heroes = heroes.slice(0, 10));
+    	this.heroService.getHeroes().then(heroes => {
+        this.loaded = true;
+        this.hasHeroes = heroes.length == 0 ? false : true;
+        this.heroes = heroes.slice(0, 10);
+      });
   }
 
   selectHero(hero: Hero): void {
@@ -33,12 +38,12 @@ export class DashboardComponent implements OnInit {
   }
 
   search(name: string){
-  
+
   }
 
   create(): void{
     let link = ['/create'];
     this.router.navigate(link);
-  }	
+  }
 
 }

@@ -11,12 +11,13 @@ import { HeroService }         from './hero.service';
 import { DashboardComponent }      from './dashboard.component';
 import { HeroCreateComponent }      from './hero-create.component';
 import { HeroFormComponent }      from './hero-form.component';
+import { LoadingHeroesComponent }      from './loading-heroes.component';
 
 import { routing } from './app.routing';
 
 @NgModule({
   imports:      [ BrowserModule,FormsModule,HttpModule, routing ],
-  declarations: [ AppComponent, HeroDetailComponent, HeroesComponent, DashboardComponent,HeroCreateComponent, HeroFormComponent ],
+  declarations: [ AppComponent, HeroDetailComponent, HeroesComponent, DashboardComponent,HeroCreateComponent, HeroFormComponent,LoadingHeroesComponent ],
   providers: 	[HeroService],
   bootstrap:    [ AppComponent ]
 })

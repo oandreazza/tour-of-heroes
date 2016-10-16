@@ -18,13 +18,20 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
   quickHero: Hero = new Hero();
+  deletedHero: Hero;
+  loaded = false;
+  hasHeroes = false;
 
   constructor(
     private router: Router,
     private heroService: HeroService) { }
 
   getHeroes(): void {
-    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    this.heroService.getHeroes().then(heroes => {
+      this.heroes = heroes
+      this.loaded = true;
+      this.hasHeroes = this.heroes.length > 0 ? true : false;
+    });
   }
 
   ngOnInit(): void {
@@ -38,15 +45,19 @@ export class HeroesComponent implements OnInit {
   quickAdd(): void{
     this.heroService
       .save(this.quickHero.name)
-      .then( hero => this.heroes.push(hero));
+      .then( this.getHeroes() );
 
       this.quickHero = new Hero();
   }
 
   delete(hero: Hero): void{
     this.heroService.delete(hero.id).then(() => {
-        this.heroes = this.heroes.filter(h => h !== hero);
+        this.getHeroes();
         if (this.selectedHero === hero) { this.selectedHero = null; }
+        this.deletedHero = hero;
+        setTimeout(() => {
+          this.deletedHero = null;
+        }, 2000)
       });
   }
 

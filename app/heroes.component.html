@@ -8,8 +8,11 @@
 	<button type="button"  (click)="quickAdd()" [disabled]="!heroForm.form.valid" class="btn btn-default">Quick add</button>
 </form>
 
+<p *ngIf="deletedHero" class="bg-danger text-danger">
+	{{deletedHero.name | uppercase }}  deleted !
+<p>
 
-
+<loading-heroes [loaded]="loaded" [hasHeroes]="hasHeroes"></loading-heroes>
 <div class="list-group">
 	<a class="list-group-item list-group-item-action" *ngFor="let hero of heroes" [class.active]="hero === selectedHero" (click)="onSelect(hero)">
 			{{hero.name}}
