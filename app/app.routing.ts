@@ -1,10 +1,10 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HeroesComponent }      from './heroes.component';
-import { DashboardComponent }      from './dashboard.component';
-import { HeroDetailComponent }      from './hero-detail.component';
-import { HeroCreateComponent }      from './hero-create.component';
+import { HeroesComponent }      from './hero/heroes.component';
+import { DashboardComponent }      from './hero/dashboard.component';
+import { HeroDetailComponent }      from './hero/hero-detail.component';
+import { HeroCreateComponent }      from './hero/hero-create.component';
 
 const appRoutes: Routes = [
   {

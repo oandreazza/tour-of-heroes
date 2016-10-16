@@ -26,8 +26,8 @@ var HeroCreateComponent = (function () {
     HeroCreateComponent = __decorate([
         core_1.Component({
             selector: 'hero-create',
-            templateUrl: 'app/hero-form.component.html',
-            styleUrls: ['app/hero-create.component.css']
+            templateUrl: './app/hero/hero-create.component.html',
+            styleUrls: ['./app/hero/hero-create.component.css']
         }), 
         __metadata('design:paramtypes', [hero_service_1.HeroService])
     ], HeroCreateComponent);

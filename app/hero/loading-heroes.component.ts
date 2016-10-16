@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'loading-heroes',
-  templateUrl: 'app/loading-heroes.component.html',
+  templateUrl: './app/hero/loading-heroes.component.html',
 
 })
 

@@ -25,7 +25,7 @@ var LoadingHeroesComponent = (function () {
     LoadingHeroesComponent = __decorate([
         core_1.Component({
             selector: 'loading-heroes',
-            templateUrl: 'app/loading-heroes.component.html',
+            templateUrl: './app/hero/loading-heroes.component.html',
         }), 
         __metadata('design:paramtypes', [])
     ], LoadingHeroesComponent);

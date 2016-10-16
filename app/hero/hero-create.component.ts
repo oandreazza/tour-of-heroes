@@ -5,8 +5,8 @@ import { HeroService } from './hero.service';
 
 @Component({
   selector: 'hero-create',
-  templateUrl: 'app/hero-form.component.html',
-  styleUrls: ['app/hero-create.component.css']
+  templateUrl: './app/hero/hero-create.component.html',
+  styleUrls: ['./app/hero/hero-create.component.css']
 
 })
 
@@ -26,5 +26,5 @@ export class HeroCreateComponent{
 	goBack(): void{
 		window.history.back();
 	}
-	
+
 }
