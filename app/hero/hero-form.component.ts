@@ -19,4 +19,8 @@ export class HeroFormComponent{
     this.saveRequest.emit(this.hero)
   }
 
+  back(): void{
+    window.history.back();
+  }
+
 }
