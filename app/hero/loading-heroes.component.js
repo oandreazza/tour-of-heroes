@@ -24,8 +24,9 @@ var LoadingHeroesComponent = (function () {
     ], LoadingHeroesComponent.prototype, "hasHeroes", void 0);
     LoadingHeroesComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'loading-heroes',
-            templateUrl: './app/hero/loading-heroes.component.html',
+            templateUrl: 'loading-heroes.component.html',
         }), 
         __metadata('design:paramtypes', [])
     ], LoadingHeroesComponent);

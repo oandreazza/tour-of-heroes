@@ -4,9 +4,10 @@ import { Hero }    from './hero';
 import { HeroService } from './hero.service';
 
 @Component({
+  moduleId: module.id,
   selector: 'hero-create',
-  templateUrl: './app/hero/hero-create.component.html',
-  styleUrls: ['./app/hero/hero-create.component.css']
+  templateUrl: 'hero-create.component.html',
+  styleUrls: ['hero-create.component.css']
 
 })
 

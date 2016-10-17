@@ -7,9 +7,10 @@ import { HeroService } from './hero.service';
 
 
 @Component({
+  moduleId: module.id,
   selector: 'my-heroes',
-  templateUrl: './app/hero/heroes.component.html',
-  styleUrls: ['./app/hero/heroes.component.css'],
+  templateUrl: 'heroes.component.html',
+  styleUrls: ['heroes.component.css'],
 
 })
 
@@ -32,6 +33,7 @@ export class HeroesComponent implements OnInit {
       this.loaded = true;
       this.hasHeroes = this.heroes.length > 0 ? true : false;
     });
+    this.loaded = false;
   }
 
   ngOnInit(): void {

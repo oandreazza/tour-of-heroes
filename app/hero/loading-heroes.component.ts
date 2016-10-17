@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'loading-heroes',
-  templateUrl: './app/hero/loading-heroes.component.html',
+  templateUrl: 'loading-heroes.component.html',
 
 })
 

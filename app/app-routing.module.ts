@@ -1,4 +1,4 @@
-import { ModuleWithProviders }  from '@angular/core';
+import { NgModule }             from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HeroesComponent }      from './hero/heroes.component';
@@ -29,10 +29,11 @@ const appRoutes: Routes = [
     path: 'create',
     component: HeroCreateComponent
   }
-
-
-
 ];
 
+@NgModule({
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule]
+})
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export class AppRoutingModule {}

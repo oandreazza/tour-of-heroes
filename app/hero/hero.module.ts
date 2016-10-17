@@ -3,7 +3,6 @@ import { FormsModule }   from '@angular/forms';
 import { CommonModule }   from '@angular/common';
 import { HttpModule }    from '@angular/http';
 
-
 import { HeroDetailComponent } from './hero-detail.component';
 import { HeroesComponent } from './heroes.component';
 import { HeroService }         from './hero.service';
