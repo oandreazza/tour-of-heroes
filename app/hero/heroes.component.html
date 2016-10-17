@@ -8,21 +8,28 @@
 	<button type="button"  (click)="quickAdd()" [disabled]="!heroForm.form.valid" class="btn btn-default">Quick add</button>
 </form>
 
+<div *ngIf="selectedHero" class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Hero Details</h3>
+	</div>
+	<div class="panel-body">
+		<h2>
+			{{selectedHero.name | uppercase}} is my hero
+		</h2>
+		<button class="btn" (click)="gotoDetail()">View Details</button>
+	</div>
+</div>
+
 <p *ngIf="deletedHero" class="bg-danger text-danger">
 	{{deletedHero.name | uppercase }}  deleted !
 <p>
 
 <loading-heroes [loaded]="loaded" [hasHeroes]="hasHeroes"></loading-heroes>
+
+
 <div class="list-group">
 	<a class="list-group-item list-group-item-action" *ngFor="let hero of heroes" [class.active]="hero === selectedHero" (click)="onSelect(hero)">
 			{{hero.name}}
 		<button type="button"  (click)="delete(hero); $event.stopPropagation()" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	</a>
-</div>
-
-<div *ngIf="selectedHero">
-	<h2>
-		{{selectedHero.name | uppercase}} is my hero
-	</h2>
-	<button (click)="gotoDetail()">View Details</button>
 </div>
