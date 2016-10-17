@@ -1,7 +1,7 @@
 <h3>Top Heroes</h3>
 <form class="form-inline" #heroForm="ngForm">
 	<div class="form-group">
-		<label for="exampleInputName2">Name</label>
+		<label for="name">Name</label>
 		<input type="text" #heroName class="form-control" id="name" name="name" placeholder="" required>
 	</div>
 	<button type="button"  (click)="search(heroName.value)" class="btn btn-primary">Search</button>
