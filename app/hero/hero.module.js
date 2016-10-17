@@ -18,14 +18,15 @@ var hero_service_1 = require('./hero.service');
 var dashboard_component_1 = require('./dashboard.component');
 var hero_create_component_1 = require('./hero-create.component');
 var loading_heroes_component_1 = require('./loading-heroes.component');
+var hero_form_component_1 = require('./hero-form.component');
 var HeroModule = (function () {
     function HeroModule() {
     }
     HeroModule = __decorate([
         core_1.NgModule({
             imports: [forms_1.FormsModule, http_1.HttpModule, common_1.CommonModule],
-            declarations: [hero_detail_component_1.HeroDetailComponent, heroes_component_1.HeroesComponent, dashboard_component_1.DashboardComponent, hero_create_component_1.HeroCreateComponent, loading_heroes_component_1.LoadingHeroesComponent],
-            exports: [hero_detail_component_1.HeroDetailComponent, heroes_component_1.HeroesComponent, dashboard_component_1.DashboardComponent, hero_create_component_1.HeroCreateComponent, loading_heroes_component_1.LoadingHeroesComponent],
+            declarations: [hero_detail_component_1.HeroDetailComponent, heroes_component_1.HeroesComponent, dashboard_component_1.DashboardComponent, hero_create_component_1.HeroCreateComponent, loading_heroes_component_1.LoadingHeroesComponent, hero_form_component_1.HeroFormComponent],
+            exports: [hero_detail_component_1.HeroDetailComponent, heroes_component_1.HeroesComponent, dashboard_component_1.DashboardComponent, hero_create_component_1.HeroCreateComponent, loading_heroes_component_1.LoadingHeroesComponent, hero_form_component_1.HeroFormComponent],
             providers: [hero_service_1.HeroService],
         }), 
         __metadata('design:paramtypes', [])
