@@ -45,7 +45,17 @@ var DashboardComponent = (function () {
             moduleId: module.id,
             selector: 'my-dashboard',
             templateUrl: 'dashboard.component.html',
-            styleUrls: ['dashboard.component.css']
+            styleUrls: ['dashboard.component.css'],
+            animations: [
+                core_1.trigger('heroState', [
+                    core_1.state('true', core_1.style({
+                        backgroundColor: 'green',
+                        color: 'white',
+                        transform: 'scale(1.1)'
+                    })),
+                    core_1.transition('* => true', core_1.animate('2000ms ease-out')),
+                ])
+            ]
         }), 
         __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.Router])
     ], DashboardComponent);

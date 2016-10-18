@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,trigger,
+  state,
+  style,
+  transition,
+  animate } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Hero } from './hero';
@@ -9,7 +13,17 @@ import { HeroService } from './hero.service';
   moduleId: module.id,
   selector: 'my-dashboard',
   templateUrl: 'dashboard.component.html',
-  styleUrls: ['dashboard.component.css']
+  styleUrls: ['dashboard.component.css'],
+  animations: [
+    trigger('heroState',[
+        state('true', style({
+          backgroundColor: 'green',
+          color: 'white',
+          transform: 'scale(1.1)'
+        })),
+         transition('* => true', animate('2000ms ease-out')),
+    ])
+  ]
 
 })
 

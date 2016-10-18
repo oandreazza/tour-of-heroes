@@ -63,6 +63,18 @@ var HeroesComponent = (function () {
             selector: 'my-heroes',
             templateUrl: 'heroes.component.html',
             styleUrls: ['heroes.component.css'],
+            animations: [
+                core_1.trigger('flyInOut', [
+                    core_1.state('in', core_1.style({ transform: 'translateX(0)' })),
+                    core_1.transition('void => *', [
+                        core_1.style({ transform: 'translateX(-100%)' }),
+                        core_1.animate(100)
+                    ]),
+                    core_1.transition('* => void', [
+                        core_1.animate(100, core_1.style({ transform: 'translateX(100%)' }))
+                    ])
+                ])
+            ]
         }), 
         __metadata('design:paramtypes', [router_1.Router, hero_service_1.HeroService])
     ], HeroesComponent);

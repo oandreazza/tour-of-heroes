@@ -1,4 +1,4 @@
-<h3>Top Heroes</h3>
+<h2>Top Heroes</h2>
 <form class="form-inline" #heroForm="ngForm">
 	<div class="form-group">
 		<label for="name">Name</label>
@@ -11,7 +11,8 @@
 <button  class="btn btn-default" [disabled]="!selectedHero" (click)="goToDetail()">Edit</button>
 <div class="grid grid-pad">
 	<loading-heroes [loaded]="loaded" [hasHeroes]="hasHeroes"></loading-heroes>
-  <div *ngFor="let hero of heroes" (click)="selectHero(hero)" class="col-1-4">
+
+	<div *ngFor="let hero of heroes" [@heroState]="hero === selectedHero" (click)="selectHero(hero)" class="col-1-4">
     <div class="module hero" [class.selectedDashBoardHero]="hero === selectedHero">
       <h4>{{hero.name}}</h4>
     </div>

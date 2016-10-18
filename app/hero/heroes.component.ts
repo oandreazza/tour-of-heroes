@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,trigger,
+  state,
+  style,
+  transition,
+  animate } from '@angular/core';
 import { Router, Params } from '@angular/router';
 
 import { Hero } from './hero';
@@ -11,6 +15,19 @@ import { HeroService } from './hero.service';
   selector: 'my-heroes',
   templateUrl: 'heroes.component.html',
   styleUrls: ['heroes.component.css'],
+  animations: [
+  trigger('flyInOut', [
+    state('in', style({transform: 'translateX(0)'})),
+    transition('void => *', [
+      style({transform: 'translateX(-100%)'}),
+      animate(100)
+    ]),
+    transition('* => void', [
+      animate(100, style({transform: 'translateX(100%)'}))
+    ])
+  ])
+]
+
 
 })
 
