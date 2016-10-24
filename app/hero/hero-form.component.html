@@ -1,5 +1,8 @@
 <div class="container">
     <h1>Hero Form</h1>
+    <p *ngIf="saving" class="alert alert-success" role="alert">
+    	Saving Hero
+    <p>
     <form  #heroForm="ngForm">
       <div class="form-group">
         <label for="name">Name</label>

@@ -7,6 +7,7 @@ import { Router, Params } from '@angular/router';
 
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
+import './rxjs-extensions'
 
 
 
@@ -39,18 +40,28 @@ export class HeroesComponent implements OnInit {
   deletedHero: Hero;
   loaded = false;
   hasHeroes = false;
+  saving = false;
 
   constructor(
     private router: Router,
     private heroService: HeroService) { }
 
   getHeroes(): void {
-    this.heroService.getHeroes().then(heroes => {
-      this.heroes = heroes
-      this.loaded = true;
-      this.hasHeroes = this.heroes.length > 0 ? true : false;
-    });
+    this.heroService.getHeroes().subscribe({
+      next: heroes => this.heroes = heroes,
+      complete: () => {
+        this.loaded = true;
+        this.hasHeroes = this.heroes.length > 0 ? true : false;
+        this.heroes = this.heroes.sort(this.orderByName);
+      }
+
+    }
     this.loaded = false;
+  );
+  }
+
+  orderByName(a,b){
+    return a.name.localeCompare(b.name);
   }
 
   ngOnInit(): void {
@@ -64,13 +75,18 @@ export class HeroesComponent implements OnInit {
   quickAdd(): void{
     this.heroService
       .save(this.quickHero.name)
-      .then( this.getHeroes() );
+      .subscribe( () =>  {
+        this.getHeroes()
+        this.saving = false;
+      }
+      this.saving = true;
+    );
 
       this.quickHero = new Hero();
   }
 
   delete(hero: Hero): void{
-    this.heroService.delete(hero.id).then(() => {
+    this.heroService.delete(hero.id).subscribe(() => {
         this.getHeroes();
         if (this.selectedHero === hero) { this.selectedHero = null; }
         this.deletedHero = hero;

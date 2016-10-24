@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
+import './rxjs-extensions'
 
 @Component({
   moduleId: module.id,
@@ -16,6 +17,7 @@ import { HeroService } from './hero.service';
 export class HeroDetailComponent implements OnInit{
 	@Input()
 	hero: Hero;
+  saving;
 
   constructor(
     private heroService: HeroService,
@@ -28,13 +30,17 @@ export class HeroDetailComponent implements OnInit{
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
       this.heroService.getHero(id)
-        .then(hero => this.hero = hero);
+        .subscribe(hero => this.hero = hero);
     });
   }
 
   update(hero: Hero): void {
     this.heroService.update(hero)
-    .then(this.goBack);
+    .subscribe(() => {
+      this.goBack()
+    }
+    this.saving = true;
+  );
   }
 
   goBack(): void {

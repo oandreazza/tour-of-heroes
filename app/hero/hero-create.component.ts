@@ -15,12 +15,17 @@ import { HeroService } from './hero.service';
 export class HeroCreateComponent{
 
 	hero = new Hero();
+  saving;
 
 	constructor(private heroService: HeroService){}
 
 	create(hero: Hero): void{
 		this.heroService.save(hero.name)
-		.then(this.goBack);
+		  .subscribe(() => {
+        this.goBack();
+      }
+      this.saving = true;
+    );
 	}
 
 

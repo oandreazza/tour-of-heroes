@@ -8,20 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'Tour of Heroes';
     }
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: 'my-app',
+            template: "\n\n\t\t <nav class=\"navbar navbar-default navbar-fixed-top\">\n  \t\t<div class=\"container\">\n\t\t\t\t<div class=\"navbar-header\">\n\t\t\t\t\t{{title}}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</nav>\n\t\t<ul class=\"nav nav-tabs\">\n\t\t <li role=\"presentation\" routerLinkActive=\"active\"><a routerLink=\"dashboard\" >Dashboard</a></li>\n\t\t <li role=\"presentation\" routerLinkActive=\"active\"><a routerLink=\"heroes\" >Heroes</a></li>\n\t \t</ul>\n\t\t<router-outlet></router-outlet>\n\n\t\t \t",
+            styleUrls: ['app/app.component.css']
+        }), 
+        __metadata('design:paramtypes', [])
+    ], AppComponent);
     return AppComponent;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        template: "\n\n\t\t <nav class=\"navbar navbar-default navbar-fixed-top\">\n  \t\t<div class=\"container\">\n\t\t\t\t<div class=\"navbar-header\">\n\t\t\t\t\t{{title}}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</nav>\n\t\t<ul class=\"nav nav-tabs\">\n\t\t <li role=\"presentation\" routerLinkActive=\"active\"><a routerLink=\"dashboard\" >Dashboard</a></li>\n\t\t <li role=\"presentation\" routerLinkActive=\"active\"><a routerLink=\"heroes\" >Heroes</a></li>\n\t \t</ul>\n\t\t<router-outlet></router-outlet>\n\n\t\t \t",
-        styleUrls: ['app/app.component.css']
-    }),
-    __metadata("design:paramtypes", [])
-], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

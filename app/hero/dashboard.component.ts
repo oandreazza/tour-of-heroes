@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
+import './rxjs-extensions'
 
 
 @Component({
@@ -36,11 +37,16 @@ export class DashboardComponent implements OnInit {
 	constructor(private heroService: HeroService, private router: Router) { }
 
 	ngOnInit(): void {
-    	this.heroService.getHeroes().then(heroes => {
-        this.loaded = true;
-        this.hasHeroes = heroes.length == 0 ? false : true;
-        this.heroes = heroes.slice(0, 10);
-      });
+    	this.heroService.getHeroes().subscribe( {
+        next: heroes => this.heroes = heroes,
+        complete: () => {
+          this.loaded = true;
+          this.hasHeroes = this.heroes.length == 0 ? false : true;
+          this.heroes = this.heroes.slice(0,10);
+        }
+      }
+      this.loaded = false;
+    );
   }
 
   selectHero(hero: Hero): void {

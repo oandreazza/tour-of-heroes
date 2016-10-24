@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var hero_service_1 = require('./hero.service');
+require('./rxjs-extensions');
 var DashboardComponent = (function () {
     function DashboardComponent(heroService, router) {
         this.heroService = heroService;
@@ -21,11 +22,15 @@ var DashboardComponent = (function () {
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.heroService.getHeroes().then(function (heroes) {
-            _this.loaded = true;
-            _this.hasHeroes = heroes.length == 0 ? false : true;
-            _this.heroes = heroes.slice(0, 10);
-        });
+        this.heroService.getHeroes().subscribe({
+            next: function (heroes) { return _this.heroes = heroes; },
+            complete: function () {
+                _this.loaded = true;
+                _this.hasHeroes = _this.heroes.length == 0 ? false : true;
+                _this.heroes = _this.heroes.slice(0, 10);
+            }
+        }, this.loaded = false);
+        ;
     };
     DashboardComponent.prototype.selectHero = function (hero) {
         this.selectedHero = hero;

@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var hero_1 = require('./hero');
 var hero_service_1 = require('./hero.service');
+require('./rxjs-extensions');
 var HeroesComponent = (function () {
     function HeroesComponent(router, heroService) {
         this.router = router;
@@ -19,15 +20,22 @@ var HeroesComponent = (function () {
         this.quickHero = new hero_1.Hero();
         this.loaded = false;
         this.hasHeroes = false;
+        this.saving = false;
     }
     HeroesComponent.prototype.getHeroes = function () {
         var _this = this;
-        this.heroService.getHeroes().then(function (heroes) {
-            _this.heroes = heroes;
-            _this.loaded = true;
-            _this.hasHeroes = _this.heroes.length > 0 ? true : false;
-        });
-        this.loaded = false;
+        this.heroService.getHeroes().subscribe({
+            next: function (heroes) { return _this.heroes = heroes; },
+            complete: function () {
+                _this.loaded = true;
+                _this.hasHeroes = _this.heroes.length > 0 ? true : false;
+                _this.heroes = _this.heroes.sort(_this.orderByName);
+            }
+        }, this.loaded = false);
+        ;
+    };
+    HeroesComponent.prototype.orderByName = function (a, b) {
+        return a.name.localeCompare(b.name);
     };
     HeroesComponent.prototype.ngOnInit = function () {
         this.getHeroes();
@@ -36,14 +44,19 @@ var HeroesComponent = (function () {
         this.selectedHero = this.selectedHero === hero ? null : hero;
     };
     HeroesComponent.prototype.quickAdd = function () {
+        var _this = this;
         this.heroService
             .save(this.quickHero.name)
-            .then(this.getHeroes());
+            .subscribe(function () {
+            _this.getHeroes();
+            _this.saving = false;
+        }, this.saving = true);
+        ;
         this.quickHero = new hero_1.Hero();
     };
     HeroesComponent.prototype.delete = function (hero) {
         var _this = this;
-        this.heroService.delete(hero.id).then(function () {
+        this.heroService.delete(hero.id).subscribe(function () {
             _this.getHeroes();
             if (_this.selectedHero === hero) {
                 _this.selectedHero = null;

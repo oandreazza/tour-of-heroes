@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var hero_1 = require('./hero');
 var hero_service_1 = require('./hero.service');
+require('./rxjs-extensions');
 var HeroDetailComponent = (function () {
     function HeroDetailComponent(heroService, route) {
         this.heroService = heroService;
@@ -23,12 +24,16 @@ var HeroDetailComponent = (function () {
         this.route.params.forEach(function (params) {
             var id = +params['id'];
             _this.heroService.getHero(id)
-                .then(function (hero) { return _this.hero = hero; });
+                .subscribe(function (hero) { return _this.hero = hero; });
         });
     };
     HeroDetailComponent.prototype.update = function (hero) {
+        var _this = this;
         this.heroService.update(hero)
-            .then(this.goBack);
+            .subscribe(function () {
+            _this.goBack();
+        }, this.saving = true);
+        ;
     };
     HeroDetailComponent.prototype.goBack = function () {
         window.history.back();

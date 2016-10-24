@@ -23,6 +23,9 @@
 <p *ngIf="deletedHero" class="alert alert-danger" role="alert">
 	{{deletedHero.name | uppercase }}  deleted !
 <p>
+<p *ngIf="saving" class="alert alert-success" role="alert">
+	Saving Hero
+<p>
 
 <loading-heroes [loaded]="loaded" [hasHeroes]="hasHeroes"></loading-heroes>
 

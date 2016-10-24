@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var hero_1 = require('./hero');
 var HeroFormComponent = (function () {
     function HeroFormComponent() {
+        this.saving = false;
         this.saveRequest = new core_1.EventEmitter();
     }
     HeroFormComponent.prototype.save = function () {
@@ -24,6 +25,10 @@ var HeroFormComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', hero_1.Hero)
     ], HeroFormComponent.prototype, "hero", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], HeroFormComponent.prototype, "saving", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)

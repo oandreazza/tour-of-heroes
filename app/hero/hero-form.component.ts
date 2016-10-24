@@ -12,6 +12,9 @@ export class HeroFormComponent{
   @Input()
   hero : Hero;
 
+  @Input()
+  saving = false;
+
   @Output()
   saveRequest = new EventEmitter<Hero>();
 

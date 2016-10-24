@@ -8,31 +8,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var hero_1 = require('./hero');
-var hero_service_1 = require('./hero.service');
+var core_1 = require("@angular/core");
+var hero_1 = require("./hero");
+var hero_service_1 = require("./hero.service");
 var HeroCreateComponent = (function () {
     function HeroCreateComponent(heroService) {
         this.heroService = heroService;
         this.hero = new hero_1.Hero();
     }
     HeroCreateComponent.prototype.create = function (hero) {
+        var _this = this;
         this.heroService.save(hero.name)
-            .then(this.goBack);
+            .subscribe(function () {
+            _this.goBack();
+        }, this.saving = true);
+        ;
     };
     HeroCreateComponent.prototype.goBack = function () {
         window.history.back();
     };
-    HeroCreateComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'hero-create',
-            templateUrl: 'hero-create.component.html',
-            styleUrls: ['hero-create.component.css']
-        }), 
-        __metadata('design:paramtypes', [hero_service_1.HeroService])
-    ], HeroCreateComponent);
     return HeroCreateComponent;
 }());
+HeroCreateComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'hero-create',
+        templateUrl: 'hero-create.component.html',
+        styleUrls: ['hero-create.component.css']
+    }),
+    __metadata("design:paramtypes", [hero_service_1.HeroService])
+], HeroCreateComponent);
 exports.HeroCreateComponent = HeroCreateComponent;
 //# sourceMappingURL=hero-create.component.js.map
